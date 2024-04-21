@@ -8,14 +8,18 @@ namespace TrainingFPTCo.Controllers
 {
     public class CoursesController : Controller
     {
+        
+
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string? keyword, string? filter)
         {
             CourseViewModel course = new CourseViewModel();
             course.CourseDetailsList = new List<CourseDetail>();
-            var dataCourses = new CourseQuery().GetAllDataCourses();
+            var dataCourses = new CourseQuery().GetAllDataCourses(keyword, filter);
+            var categoryQuery = new CategoryQuery();
             foreach (var data in dataCourses)
             {
+                string categoryName = categoryQuery.GetCategoryNameById(data.CategoryId);
                 course.CourseDetailsList.Add(new CourseDetail
                 {
                     Id = data.Id,
@@ -28,7 +32,7 @@ namespace TrainingFPTCo.Controllers
                     StartDate = data.StartDate,
                     EndDate = data.EndDate,
                     ViewImageCouser = data.ViewImageCouser,
-                    ViewCategoryName = data.ViewCategoryName
+                    ViewCategoryName = categoryName
                 });
             }
             return View(course);
@@ -109,7 +113,7 @@ namespace TrainingFPTCo.Controllers
             bool deleteCourse = new CourseQuery().DeleteCourseById(id);
             if (deleteCourse)
             {
-                return Json(new {cod = 200, message = "Successfully"});
+                return Json(new { cod = 200, message = "Successfully" });
             }
             return Json(new { cod = 500, message = "Failure" });
         }
@@ -146,22 +150,23 @@ namespace TrainingFPTCo.Controllers
                     imageCourse = UploadFileHelper.UpLoadFile(Image, "images");
                 }
                 bool update = new CourseQuery().UpdateCourseById(
-                        courseDetail.CategoryId,
+                        courseDetail.Id,
                         courseDetail.Name,
+                        courseDetail.CategoryId,
                         courseDetail.Description,
-                        imageCourse,
                         courseDetail.StartDate,
                         courseDetail.EndDate,
                         courseDetail.Status,
-                        courseDetail.Id
-                    );
+                        imageCourse
+
+                        );
                 if (update)
                 {
-                    TempData["updateStatus"] = true;
+                    TempData["saveUpdate"] = true;
                 }
                 else
                 {
-                    TempData["updateStatus"] = false;
+                    TempData["saveUpdate"] = false;
                 }
                 return RedirectToAction("Index", "Courses");
             }
@@ -177,10 +182,11 @@ namespace TrainingFPTCo.Controllers
                 {
                     Value = item.Id.ToString(),
                     Text = item.Name
-                });
+                }) ;
             }
             ViewBag.Categories = itemCategories;
             return View(courseDetail);
         }
+
     }
 }

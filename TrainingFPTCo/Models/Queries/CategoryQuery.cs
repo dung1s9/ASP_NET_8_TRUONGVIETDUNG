@@ -100,6 +100,27 @@ namespace TrainingFPTCo.Models.Queries
             return categoryDetail;
         }
 
+        public string GetCategoryNameById(int id)
+        {
+            string categoryName = null;
+            using (SqlConnection connection = Database.GetSqlConnection())
+            {
+                string sqlQuery = "SELECT [Name] FROM [Categories] WHERE [Id] = @id";
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@id", id);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        categoryName = reader["Name"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return categoryName;
+        }
+
         public List<CategoryDetail> GetAllCategories(string? SearchString, string? FilterStatus)
         {
             List<CategoryDetail> category = new List<CategoryDetail>();

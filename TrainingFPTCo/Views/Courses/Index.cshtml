@@ -19,28 +19,61 @@
     <div class="col-sm-12 col-md-12">
         <h3 class="text-center"> This is Courses page !</h3>
         <a class="btn btn-primary" href="@Url.Action("Add", "Courses")"> Add new Courses</a>
-        @if (TempData["saveStatus"] != null)
+        <form asp-action="Index" method="get" class="my-3">
+            <div class="form-actions no-color">
+                <p class="mb-0">
+                    Find by Name:<input value="@ViewData["currentFilter"]" type="text" name="keyword" />
+                    <span> | </span>
+                    <select name="filter">
+                        <option value=""> -- Status --</option>
+                        @if (ViewBag.FilterStatus == "Active")
+                {
+                        <option value="Active" selected="selected"> Active </option>
+                }
+                else
+                {
+                        <option value="Active"> Active </option>
+                }
+                        @if (ViewBag.FilterStatus == "Deactive")
+                {
+                        <option value="Deactive" selected="selected"> Deactive </option>
+                }
+                else
+                {
+                        <option value="Deactive"> Deactive </option>
+                }
+                    </select>
+
+                    <span> | </span>
+                    <button type="submit" class="btn btn-primary btn-sm mb-0"> Filter and Search </button>
+                    <span> | </span>
+                    <a asp-action="Index"> Back To list </a>
+                </p>
+            </div>
+
+        </form>
+        @*@if (TempData["saveStatus"] != null)
         {
-            @if (saveStatus)
-            {
-                <div class="text-success my-3"> Add Successfully</div>   
+        @if (saveStatus)
+                {
+        <div class="text-success my-3"> Add Successfully</div>
+                }
+                else
+                {
+        <div class="text-danger my-3"> Add Failure</div>
+                }
             }
-            else
-            {
-                <div class="text-danger my-3"> Add Failure</div>
-            }
-        }
         @if (TempData["updateStatus"] != null)
-        {
-            @if (updateStatus)
             {
-                <div class="text-success my-3"> Update Successfully</div>
-            }
-            else
-            {
-                <div class="text-danger my-3"> Update Failure</div>
-            }
-        }
+        @if (updateStatus)
+                {
+        <div class="text-success my-3"> Update Successfully</div>
+                }
+                else
+                {
+        <div class="text-danger my-3"> Update Failure</div>
+                }
+        }*@
 
         <table class="table table-bordered table-striped mt-3">
             <thead class="table-primary">
@@ -61,24 +94,25 @@
             <tbody>
                 @foreach (var item in Model.CourseDetailsList)
                 {
-                    <tr class="row-course-@item.Id">
-                        <td>@item.Id</td>
-                        <td>@item.Name</td>
-                        <td>@item.ViewCategoryName</td>
-                        <td width="15%">
-                            <img class="img-fluid img-thumbnail" alt="@item.Name" src="/uploads/images/@item.ViewImageCouser" />
-                        </td>
-                        <td>@item.Description</td>
-                        <td>@item.ViewStartDate</td>
-                        <td>@item.ViewEndDate</td>
-                        <td>@item.Status</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" href="@Url.Action("Update", "Courses",new {id = item.Id})"> Edit</a>
-                        </td>
-                        <td>
-                            <button id="@item.Id" class="btn btn-danger btn-sm js-delete-course"> Delete</button>
-                        </td>
-                    </tr>
+
+                <tr class="row-course-@item.Id">
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.ViewCategoryName</td>
+                    <td width="15%">
+                        <img class="img-fluid img-thumbnail" alt="@item.Name" src="/uploads/images/@item.ViewImageCouser" />
+                    </td>
+                    <td>@item.Description</td>
+                    <td>@item.ViewStartDate</td>
+                    <td>@item.ViewEndDate</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="@Url.Action("Update", "Courses",new {id = item.Id})"> Edit</a>
+                    </td>
+                    <td>
+                        <button id="@item.Id" class="btn btn-danger btn-sm js-delete-course"> Delete</button>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

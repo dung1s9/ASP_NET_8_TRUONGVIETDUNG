@@ -27,9 +27,9 @@ namespace TrainingFPTCo.Models.Queries
                         dataUser.UserName = reader["Username"].ToString();
                         dataUser.ExtraCode = reader["ExtraCode"].ToString();
                         dataUser.Email = reader["Email"].ToString();
-                        dataUser.RolesId = reader["RolesId"].ToString();
+                        dataUser.RolesId = reader["RoleId"].ToString();
                         dataUser.Phone = reader["Phone"].ToString();
-                        dataUser.FullName = reader["FullName"].ToString();
+                        dataUser.FullName = reader["Education"].ToString();
                     }
                     // ngat ket noi database
                     conn.Close();

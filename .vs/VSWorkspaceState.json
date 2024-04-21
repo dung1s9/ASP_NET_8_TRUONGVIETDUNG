@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\TrainingFPTCo",
+    "\\TrainingFPTCo\\Controllers",
+    "\\TrainingFPTCo\\Models",
+    "\\TrainingFPTCo\\Models\\Queries",
+    "\\TrainingFPTCo\\Views",
+    "\\TrainingFPTCo\\Views\\Courses",
+    "\\TrainingFPTCo\\Views\\Shared",
+    "\\TrainingFPTCo\\Views\\Topic"
+  ],
+  "SelectedNode": "\\TrainingFPTCo\\Models\\Queries\\CourseQuery.cs",
+  "PreviewInSolutionExplorer": false
+}

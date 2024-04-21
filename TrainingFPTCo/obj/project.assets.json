@@ -4560,19 +4560,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nguyenthanhtrieu\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\setup\\CSharp\\TrainingFPTCo\\TrainingFPTCo\\TrainingFPTCo.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\ASP-MVC-Net-8\\TrainingFPTCo\\TrainingFPTCo.csproj",
       "projectName": "TrainingFPTCo",
-      "projectPath": "C:\\setup\\CSharp\\TrainingFPTCo\\TrainingFPTCo\\TrainingFPTCo.csproj",
-      "packagesPath": "C:\\Users\\nguyenthanhtrieu\\.nuget\\packages\\",
-      "outputPath": "C:\\setup\\CSharp\\TrainingFPTCo\\TrainingFPTCo\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\source\\repos\\ASP-MVC-Net-8\\TrainingFPTCo\\TrainingFPTCo.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\source\\repos\\ASP-MVC-Net-8\\TrainingFPTCo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nguyenthanhtrieu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4592,11 +4592,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4655,7 +4650,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

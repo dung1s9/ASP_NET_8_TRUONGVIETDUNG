@@ -13,15 +13,13 @@
                     case "images":
                         pathUploadServer = "wwwroot\\uploads\\images";
                         break;
-                    case "videos":
-                        pathUploadServer = "wwwroot\\uploads\\videos";
+                    case "attachfiles":
+                        pathUploadServer = "wwwroot\\uploads\\attachfiles";
                         break;
                     case "documents":
                         pathUploadServer = "wwwroot\\uploads\\documents";
                         break;
-                    default:
-                        pathUploadServer = "wwwroot\\uploads\\images";
-                        break;
+
                 }
                 string fileName = file.FileName;
                 string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);

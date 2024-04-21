@@ -1,19 +1,21 @@
 ﻿using Microsoft.Data.SqlClient;
+using TrainingFPTCo.Migrations;
 
 namespace TrainingFPTCo.Models.Queries
 {
     public class CourseQuery
     {
         public bool UpdateCourseById(
-            int categoryId,
+            int id,
             string nameCourse,
+            int categoryId,
             string? description,
-            string image,
             DateTime startDate,
             DateTime? endDate,
             string status,
-            int id
-        )
+            string imageCourse
+
+            )
         {
             string valEndate = DBNull.Value.ToString();
             if (endDate != null)
@@ -25,11 +27,11 @@ namespace TrainingFPTCo.Models.Queries
             {
                 string sql = "UPDATE [Courses] SET [CategoryId] = @CategoryId, [Name] = @Name, [Description] = @Description, [Image] = @Image, [StartDate] = @StartDate, [EndDate] = @EndDate, [Status] = @Status, [UpdatedAt] = @UpdatedAt WHERE [Id] = @Id AND [DeletedAt] IS NULL";
                 connection.Open();
-                SqlCommand cmd = new SqlCommand( sql, connection );
+                SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.Parameters.AddWithValue("@CategoryId", categoryId);
                 cmd.Parameters.AddWithValue("@Name", nameCourse);
                 cmd.Parameters.AddWithValue("@Description", description ?? DBNull.Value.ToString());
-                cmd.Parameters.AddWithValue("@Image", image);
+                cmd.Parameters.AddWithValue("@Image", imageCourse);
                 cmd.Parameters.AddWithValue("@StartDate", startDate);
                 cmd.Parameters.AddWithValue("@EndDate", valEndate);
                 cmd.Parameters.AddWithValue("@Status", status);
@@ -65,7 +67,7 @@ namespace TrainingFPTCo.Models.Queries
             {
                 string sql = "SELECT * FROM [Courses] WHERE [Id] = @id AND [DeletedAt] IS NULL";
                 connection.Open();
-                SqlCommand cmd = new SqlCommand (sql, connection);
+                SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.Parameters.AddWithValue("@id", id);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -81,7 +83,7 @@ namespace TrainingFPTCo.Models.Queries
                         detail.ViewImageCouser = reader["Image"].ToString();
                     }
                 }
-                connection.Close ();
+                connection.Close();
             }
             return detail;
         }
@@ -118,6 +120,77 @@ namespace TrainingFPTCo.Models.Queries
             return courses;
         }
 
+        public List<CourseDetail> GetAllDataCourses(string? keyword, string? filter)
+        {
+            string dataKeyword = "%" + keyword + "%";
+            List<CourseDetail> courses = new List<CourseDetail>();
+            using (SqlConnection connection = Database.GetSqlConnection())
+            {
+                string sqlQuery = "SELECT [co].*, CONVERT(VARCHAR(10), [co].[StartDate], 101) AS Start_Date,CONVERT(VARCHAR(10), [co].[EndDate], 101) AS End_Date, [ca].[Name] AS [CategoryName] FROM [Courses] AS [co] INNER JOIN [Categories] AS [ca] ON [co].[CategoryId] = [ca].[Id] WHERE [co].[DeletedAt] IS NULL";
+                if (filter != null)
+                {
+                    sqlQuery = "SELECT * FROM [Courses] WHERE [Name] LIKE @keyword AND [DeletedAt] IS NULL AND [Status] = @status";
+                }
+                else
+                {
+                    sqlQuery = "SELECT * FROM [Courses] WHERE [Name] LIKE @keyword AND [DeletedAt] IS NULL";
+                }
+
+                SqlCommand cmd = new SqlCommand(sqlQuery, connection);
+                cmd.Parameters.AddWithValue("@keyword", dataKeyword ?? DBNull.Value.ToString());
+                if (filter != null)
+                {
+                    cmd.Parameters.AddWithValue("@status", filter ?? DBNull.Value.ToString());
+                }
+
+
+                connection.Open();
+                //SqlCommand cmd = new SqlCommand(sql, connection);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CourseDetail detail = new CourseDetail();
+                        detail.Id = Convert.ToInt32(reader["Id"]);
+                        detail.Name = reader["Name"].ToString() ?? DBNull.Value.ToString();
+                        detail.Description = reader["Description"].ToString();
+                        detail.CategoryId = Convert.ToInt32(reader["CategoryId"]);
+                        detail.ViewStartDate = reader["StartDate"].ToString();
+                        detail.ViewEndDate = reader["EndDate"].ToString();
+                        detail.StartDate = Convert.ToDateTime(reader["StartDate"]);
+                        detail.EndDate = Convert.ToDateTime(reader["EndDate"]);
+                        detail.ViewImageCouser = reader["Image"].ToString();
+                        detail.ViewCategoryName = reader["CategoryName"].ToString();
+                        detail.Status = reader["Status"].ToString() ?? DBNull.Value.ToString();
+                        courses.Add(detail);
+                    }
+                }
+                connection.Close();
+            }
+            return courses;
+        }
+
+        public string GetCourseNameById(int id)
+        {
+            string courseName = null;
+            using (SqlConnection connection = Database.GetSqlConnection())
+            {
+                string sqlQuery = "SELECT [Name] FROM [Courses] WHERE [Id] = @id";
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@id", id);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        courseName = reader["Name"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return courseName;
+        }
+
         public int InsertCourse(
             string nameCourse,
             int categoryId,
@@ -136,12 +209,12 @@ namespace TrainingFPTCo.Models.Queries
             int IdCourse = 0;
             using (SqlConnection connection = Database.GetSqlConnection())
             {
-                string sqlQuery = "INSERT INTO [Courses]([CategoryId], [Name], [Description],[Image], [StartDate], [EndDate], [Status], [CreatedAt]) VALUES(@CategoryId, @Name, @Description, @Image, @StartDate, @EndDate, @Status, @CreatedAt) SELECT SCOPE_IDENTITY()";
-                SqlCommand cmd = new SqlCommand( sqlQuery, connection );
+                string sqlQuery = "INSERT INTO [Courses] ([CategoryId], [Name], [Description],[Image], [StartDate], [EndDate], [Status], [CreatedAt]) VALUES  (@CategoryId, @Name, @Description, @Image, @StartDate, @EndDate, @Status, @CreatedAt); SELECT SCOPE_IDENTITY()";
+                SqlCommand cmd = new SqlCommand(sqlQuery, connection);
                 connection.Open();
                 cmd.Parameters.AddWithValue("@CategoryId", categoryId);
                 cmd.Parameters.AddWithValue("@Name", nameCourse);
-                cmd.Parameters.AddWithValue ("@Description", description ?? DBNull.Value.ToString());
+                cmd.Parameters.AddWithValue("@Description", description ?? DBNull.Value.ToString());
                 cmd.Parameters.AddWithValue("@Image", imageCourse);
                 cmd.Parameters.AddWithValue("@StartDate", startDate);
                 cmd.Parameters.AddWithValue("@EndDate", valEndate);
@@ -152,5 +225,6 @@ namespace TrainingFPTCo.Models.Queries
             }
             return IdCourse;
         }
+
     }
 }

@@ -6,7 +6,7 @@ namespace TrainingFPTCo
     {
         public static string GetStrConnection()
         {
-            string strConnection = @"Data Source=NGUYENTHANH63B6;Initial Catalog=Training;Integrated Security=True;Trust Server Certificate=True";
+            string strConnection = @"Data Source=DESKTOP-5O3AH4B\SQLEXPRESS;Initial Catalog=TrainingFPT;Integrated Security=True;Trust Server Certificate=True";
             return strConnection;
         }
 

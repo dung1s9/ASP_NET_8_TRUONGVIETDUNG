@@ -15,6 +15,7 @@ namespace TrainingFPTCo.Models
         [Required(ErrorMessage = "Choose Category, please")]
         public int CategoryId { get; set; }
 
+
         public string? ViewCategoryName { get; set; }
 
         [Required(ErrorMessage = "Enter name's course, please")]

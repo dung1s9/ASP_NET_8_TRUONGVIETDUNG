@@ -7,8 +7,306 @@
     ViewData["breadcrumb_active"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
-<div class="row">
-    <div class="col-sm-12 col-md-12">
-        <h3>This is dashboard page !</h3>
+    <h1>ACCOUNT</h1>
+
+    <div class="date">
+        <input type="date">
     </div>
-</div>
+
+    <div class="insights">
+        <div class="sales">
+            <span class="material-symbols-sharp">analytics</span>
+            <div class="middle">
+                <div class="left">
+                    <h3>Total Sales</h3>
+                    <h1>$11.854</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle cx='38' cy='38' r='36'></circle>
+                    </svg>
+                    <div class="number">
+                        <p>61%</p>
+                    </div>
+                </div>
+            </div>
+            <small class="text-muted"> Last 24 Hours</small>
+        </div>
+
+        <div class="expenses">
+            <span class="material-symbols-sharp">bar_chart</span>
+            <div class="middle">
+                <div class="left">
+                    <h3>Total Expenses</h3>
+                    <h1>$13.464</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle cx='38' cy='38' r='36'></circle>
+                    </svg>
+                    <div class="number">
+                        <p>63%</p>
+                    </div>
+                </div>
+            </div>
+            <small class="text-muted"> Last 24 Hours</small>
+        </div>
+
+        <div class="income">
+            <span class="material-symbols-sharp">stacked_line_chart</span>
+            <div class="middle">
+                <div class="left">
+                    <h3>Total Income</h3>
+                    <h1>$20.374</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle cx='38' cy='38' r='36'></circle>
+                    </svg>
+                    <div class="number">
+                        <p>42%</p>
+                    </div>
+                </div>
+            </div>
+            <small class="text-muted"> Last 24 Hours</small>
+        </div>
+    </div>
+    <div class="recent-order">
+        <div class="DDD">
+            <h2 style="float: left;">Recent Accounts</h2>
+            <div class="g6 add"> <a href=""><span class="material-symbols-sharp">add</span></a></div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>USERNAME</th>
+                    <th>PASSWORD</th>
+                    <th>IS ADMIN</th>
+                    <th>ID GIFTCODE</th>
+                    <th>GENDER</th>
+                    <th>EMAIL</th>
+                    <th>ADDRESS</th>
+                    <th>PHONE NUMBER</th>
+                    <th>BAN</th>
+                    <th>DOB</th>
+                    <th>AVATAR</th>
+                    <th style="width: 15%;">DESCRIPTION</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>DDD</td>
+                    <td>123456789</td>
+                    <td Class="warning">Y/N</td>
+                    <td>1</td>
+                    <td>
+                        <form action="">
+                            <div style="display: inline-block;">
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">BOY</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="boy" style="background-color: aqua;">
+                                <label for="boy">GIRL</label>
+                            </div>
+                        </form>
+                    </td>
+                    <td>fw@gmail.com</td>
+                    <td>vietnam</td>
+                    <td>123456</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td><img src="#" alt="img"></td>
+                    <td>Lorem</td>
+                    <td>
+                        <div class="g6"> <a href="#"><span class="material-symbols-sharp">DELETE</span></a></div>
+                        <div class="g6 edit"> <a href="#"><span class="material-symbols-sharp">EDIT</span></a></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#">Show all</a>
+    </div>
+
